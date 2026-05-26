@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Primary Tutoring — Elev8 Academy</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+
+    :root{
+      --primary:#071B45;
+      --secondary:#1D3E7A;
+      --accent:#F2C14E;
+      --light:#F4EFE6;
+      --dark:#1F2937;
+      --white:#ffffff;
+      --blue:#0050d8;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:var(--light);
+      color:var(--dark);
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      background:rgba(7,27,69,0.95);
+      backdrop-filter:blur(10px);
+      padding:14px 0;
+    }
+
+    .navbar-brand{
+      display:flex;
+      align-items:center;
+      gap:2px;
+      text-decoration:none;
+    }
+
+    .navbar-brand img{
+      height:52px;
+    }
+
+    .logo-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+
+    .logo-main{
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:0.5px;
+    }
+
+    .logo-main .elev{
+      color:white;
+    }
+
+    .logo-main .eight{
+      color:var(--accent);
+    }
+
+    .logo-sub{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:white;
+      margin-top:4px;
+    }
+
+    .nav-link{
+      color:white !important;
+      margin:0 12px;
+      font-weight:500;
+      transition:0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active{
+      color:var(--accent) !important;
+    }
+
+    .dropdown-menu{
+      background:var(--primary);
+      border:none;
+      border-radius:15px;
+      padding:10px;
+    }
+
+    .dropdown-item{
+      color:white;
+      padding:10px 15px;
+      border-radius:10px;
+      transition:0.3s ease;
+    }
+
+    .dropdown-item:hover{
+      background:var(--secondary);
+      color:white;
+    }
+
+    .book-btn{
+      background:var(--accent);
+      color:var(--primary);
+      padding:12px 24px;
+      border-radius:12px;
+      font-weight:600;
+      text-decoration:none;
+      transition:0.3s ease;
+    }
+
+    .book-btn:hover{
+      background:white;
+      color:var(--primary);
+    }
+
+    /* HERO */
+
+    .primary-hero{
+      position:relative;
+      min-height:620px;
+      padding-top:130px;
+
+      background-image:
+      linear-gradient(
+      90deg,
+      rgba(244,239,230,1) 0%,
+      rgba(244,239,230,0.96) 35%,
+      rgba(244,239,230,0.68) 48%,
+      rgba(244,239,230,0.15) 68%,
+      rgba(244,239,230,0.02) 100%),
+      url('hero-kids.png');
+
+      background-size: 68%;
+      background-position:right center;
+      background-repeat:no-repeat;
+
+      overflow:hidden;
+    }
+
+    .primary-hero::after{
+      content:'';
+      position:absolute;
+      bottom:-100px;
+      left:0;
+      width:100%;
+      height:170px;
+      background:white;
+      border-top-left-radius:100% 120px;
+      border-top-right-radius:100% 120px;
+      z-index:1;
+    }
+
+    .primary-hero .container{
+      position:relative;
+      z-index:2;
+    }
+
+    .breadcrumb-text{
+      font-size:14px;
+      color:var(--secondary);
+      margin-bottom:25px;
+    }
+
+    .breadcrumb-text span{
+      color:#d99b00;
+      font-weight:500;
+    }
+
+    .primary-hero h1{
+      font-size:56px;
+      font-weight:700;
+      line-height:1.08;
+      color:var(--primary);
+      margin-bottom:25px;
+    }
+
+    .primary-hero h1 span{
+      color:var(--accent);
+    }
+
+    .primary-hero p{
+      max-width:460px;
+      font-size:18px;
+      line-height:1.7;
+      color:var(--primary);
+      margin-bottom:28px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-bottom:30px;
+    }
+
+    .hero-btn-primary{
+      background:var(--accent);
+      color:var(--primary);
+      padding:16px 28px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s ease;
+      border:2px solid var(--accent);
+    }
+
+    .hero-btn-primary:hover{
+      background:white;
+      border-color:white;
+      color:var(--primary);
+      transform:translateY(-3px);
+    }
+
+    .hero-btn-secondary{
+      border:2px solid rgba(7,27,69,0.35);
+      color:var(--primary);
+      padding:16px 100px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s ease;
+      background:white;
+    }
+
+.math-btn{
+  padding:22px 200px;
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  background:var(--primary);
+  color:white;
+  border:2px solid var(--primary);
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+
+  margin-left:0px;
+}
+
+.math-btn i{
+  font-size:24px;
+  color:var(--accent);
+}
+
+.math-btn:hover{
+  background:var(--accent);
+  color:var(--primary);
+  transform:translateY(-3px);
+}
+
+.math-btn:hover i{
+  color:var(--primary);
+}
+
+    .hero-btn-secondary:hover{
+      background:var(--primary);
+      color:white;
+    }
+
+    .hero-features{
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    .feature-item{
+      color:var(--primary);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+      font-weight:500;
+    }
+
+    .feature-icon{
+      width:38px;
+      height:38px;
+      background:var(--primary);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--accent);
+      font-size:14px;
+    }
+
+    .floating-calc{
+      position:absolute;
+      top:280px;
+      left:47%;
+      width:78px;
+      height:78px;
+      background:var(--accent);
+      color:var(--primary);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:35px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    /* COMMON */
+
+    .white-section{
+      background:white;
+      padding:70px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:45px;
+    }
+
+    .section-title h2{
+      font-size:28px;
+      font-weight:700;
+      color:var(--primary);
+      margin-bottom:10px;
+    }
+
+    .small-line{
+      width:40px;
+      height:3px;
+      background:var(--accent);
+      margin:12px auto 0;
+      border-radius:999px;
+    }
+
+    /* GOAL CARDS */
+
+    .goal-card{
+      background:white;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      height:100%;
+      transition:0.3s ease;
+      text-align:center;
+    }
+
+    .goal-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 45px rgba(0,0,0,0.12);
+    }
+
+    .goal-card img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+}
+
+    .goal-card-body{
+      padding:24px 22px;
+    }
+
+    .goal-card h3{
+      color:var(--primary);
+      font-size:20px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .goal-card p{
+      font-size:13px;
+      color:#4b5563;
+      line-height:1.6;
+      margin:0;
+    }
+
+    /* FEATURES */
+
+    .primary-feature{
+      text-align:center;
+      padding:0 30px;
+      border-right:1px solid #d9dfe9;
+      height:100%;
+    }
+
+    .primary-feature:last-child{
+      border-right:none;
+    }
+
+    .primary-feature .round-icon{
+      width:80px;
+      height:80px;
+      background:rgba(242,193,78,0.2);
+      color:var(--primary);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      margin:0 auto 20px;
+    }
+
+    .primary-feature h3{
+      color:var(--primary);
+      font-size:17px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .primary-feature p{
+      font-size:13px;
+      line-height:1.6;
+      color:#4b5563;
+    }
+
+    /* INFO BOX */
+
+    .study-box{
+      background:#f3f7ff;
+      border-radius:28px;
+      padding:40px 50px;
+      margin-top:60px;
+    }
+
+    .study-box h2{
+      font-size:26px;
+      font-weight:700;
+      color:var(--primary);
+      margin-bottom:20px;
+    }
+
+    .study-box p{
+      font-size:15px;
+      color:var(--primary);
+      line-height:1.8;
+    }
+
+    .blog-card{
+      background:white;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .blog-card img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+    }
+
+    .blog-content{
+      padding:22px;
+    }
+
+    .blog-content small{
+      color:#0050d8;
+      font-weight:700;
+      font-size:11px;
+    }
+
+    .blog-content h3{
+      font-size:24px;
+      font-weight:700;
+      color:var(--primary);
+      margin:10px 0;
+    }
+
+    .blog-content p{
+      font-size:13px;
+      color:#6b7280;
+      margin:0;
+    }
+
+    /* APPROACH */
+
+    .approach-box{
+      background:#f3f7ff;
+      border-radius:24px;
+      padding:34px;
+      max-width:950px;
+      margin:0 auto;
+    }
+
+    .approach-top{
+      border-bottom:1px solid #d9dfe9;
+      padding-bottom:25px;
+      margin-bottom:20px;
+    }
+
+    .approach-box h4{
+      color:var(--primary);
+      font-size:15px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .approach-box p,
+    .approach-box li{
+      font-size:13px;
+      line-height:1.6;
+      color:#4b5563;
+    }
+
+    .mini-card{
+      background:white;
+      border-radius:16px;
+      padding:22px;
+      height:100%;
+    }
+
+    .video-box{
+      background:
+        linear-gradient(rgba(7,27,69,0.65),rgba(7,27,69,0.65)),
+        url('video-thumb.png') center/cover no-repeat;
+      height:120px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:44px;
+    }
+
+    @media(max-width:991px){
+
+      .primary-hero{
+        background:var(--light);
+        padding-top:140px;
+      }
+
+      .primary-hero h1{
+        font-size:44px;
+      }
+
+      .floating-calc{
+        display:none;
+      }
+
+      .primary-feature{
+        border-right:none;
+        margin-bottom:35px;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .primary-hero{
+        text-align:center;
+      }
+
+      .primary-hero h1{
+        font-size:38px;
+      }
+
+      .primary-hero p{
+        font-size:16px;
+      }
+
+      .hero-buttons,
+      .hero-features{
+        justify-content:center;
+      }
+
+      .section-title h2{
+        font-size:24px;
+      }
+
+    }
+
+/* FLEXIBILITY SECTION */
+
+.focus-image-wrap{
+  position:relative;
+  width:100%;
+  max-width:420px;
+  margin:auto;
+}
+
+
+.focus-image{
+  position:relative;
+  width:100%;
+  z-index:2;
+}
+
+.flex-title{
+  font-size:48px;
+  line-height:1.3;
+  color:var(--primary);
+  margin-bottom:35px;
+}
+
+.flex-list{
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+}
+
+.flex-item{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+}
+
+.flex-item i{
+  color:#ff6b00;
+  font-size:24px;
+  margin-top:2px;
+}
+
+.flex-item p{
+  font-size:18px;
+  line-height:1.8;
+  color:var(--primary);
+  margin:0;
+}
+
+.progress-title{
+  font-size:52px;
+  line-height:1.3;
+  color:var(--primary);
+  margin-bottom:30px;
+}
+
+.progress-text{
+  font-size:22px;
+  line-height:1.8;
+  color:#374151;
+  margin-bottom:40px;
+}
+
+.progress-list{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+.progress-item{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+}
+
+.progress-item i{
+  color:#ff6b00;
+  font-size:28px;
+  margin-top:3px;
+}
+
+.progress-item p{
+  font-size:20px;
+  line-height:1.7;
+  color:var(--primary);
+  margin:0;
+}
+
+.graph-card{
+  background:#f3f7ff;
+  border-radius:24px;
+  padding:30px;
+}
+
+.graph-card img{
+  width:100%;
+  display:block;
+}
+
+@media(max-width:991px){
+
+  .flex-title,
+  .progress-title{
+    font-size:36px;
+  }
+
+  .progress-text,
+  .progress-item p,
+  .flex-item p{
+    font-size:16px;
+  }
+
+}
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+  <div class="container">
+
+    <a class="navbar-brand" href="index.html">
+
+      <img src="logo.png" alt="Logo">
+
+      <div class="logo-text">
+        <div class="logo-main">
+          <span class="elev">Elev</span><span class="eight">8</span>
+        </div>
+
+        <div class="logo-sub">
+          Academy
+        </div>
+      </div>
+
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+      <ul class="navbar-nav align-items-center">
+
+        <li class="nav-item">
+          <a class="nav-link" href="about us.html">
+            About Us
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle active"
+             href="#"
+             role="button"
+             data-bs-toggle="dropdown">
+
+            Programs
+
+          </a>
+
+          <ul class="dropdown-menu">
+
+            <li>
+              <a class="dropdown-item" href="primary.html">
+                Primary (3–6)
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="intermediate.html">
+                Intermediate (7–8)
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="secondary.html">
+                Secondary (9–13)
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            How It Works
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Contact
+          </a>
+        </li>
+
+        <li class="nav-item ms-3">
+          <a href="#" class="book-btn">
+            Book a Session
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="primary-hero">
+
+  <div class="container">
+
+    <div class="breadcrumb-text">
+      Home › <span>Programs</span> › Primary (3–6)
+    </div>
+
+    <h1>
+      Primary <br>
+      <span></span>
+    </h1
+
+    <p>
+      Tutoring programmes in Math for 3–6, mapped to the New Zealand 
+      <br>
+      Curriculum and tailored to your specific goals.
+    </p>
+
+    <div class="hero-buttons">
+
+  <a href="primary-math.html" class="hero-btn-secondary math-btn">
+    <i class="bi bi-calculator-fill"></i>
+    Math
+  </a>
+
+</div>
+
+    <div class="hero-features">
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          <i class="bi bi-people-fill"></i>
+        </div>
+
+        Expert Tutors
+
+      </div>
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          <i class="bi bi-star-fill"></i>
+        </div>
+
+        Personalized Learning
+
+      </div>
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          <i class="bi bi-graph-up-arrow"></i>
+        </div>
+
+        Proven Results
+
+      </div>
+
+    </div>
+
+    <div class="floating-calc">
+      <i class="bi bi-calculator-fill"></i>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GOALS -->
+
+<section class="white-section">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        We’ve got all your child’s learning goals covered
+      </h2>
+
+      <div class="small-line"></div>
+
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-md-4 col-lg-3">
+
+        <div class="goal-card">
+
+          <img src="falling-behind.png">
+
+          <div class="goal-card-body">
+
+            <h3>Falling behind?</h3>
+
+            <p>
+              Struggling in specific areas? Work through your child’s challenges with the right support.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4 col-lg-3">
+
+        <div class="goal-card">
+
+          <img src="motivation.png">
+
+          <div class="goal-card-body">
+
+            <h3>Extra motivation?</h3>
+
+            <p>
+              Support to keep your child on track and re-engage their mind.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4 col-lg-3">
+
+        <div class="goal-card">
+
+          <img src="extend.png">
+
+          <div class="goal-card-body">
+
+            <h3>Ready to extend?</h3>
+
+            <p>
+              Challenge your child to reach their full potential.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PRIVATE TUTORING -->
+
+<section class="white-section pt-0">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Private tutoring for primary students
+      </h2>
+
+      <div class="small-line"></div>
+
+    </div>
+
+    <div class="row justify-content-center">
+
+      <div class="col-md-4">
+
+        <div class="primary-feature">
+
+          <div class="round-icon">
+            <i class="bi bi-mortarboard-fill"></i>
+          </div>
+
+          <h3>Expert tutoring</h3>
+
+          <p>
+            Highly skilled tutors that are friendly, patient and relatable.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="primary-feature">
+
+          <div class="round-icon">
+            <i class="bi bi-book-fill"></i>
+          </div>
+
+          <h3>Quality content</h3>
+
+          <p>
+            Quality content designed by education professionals in English and Maths.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="primary-feature">
+
+          <div class="round-icon">
+            <i class="bi bi-pc-display-horizontal"></i>
+          </div>
+
+          <h3>Online</h3>
+
+          <p>
+            Delivered face-to-face online — so you can relax at home while they learn.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="study-box">
+
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-6">
+
+          <h2>
+            Help them reach their study goals
+          </h2>
+
+          <div class="small-line" style="margin-left:0;margin-bottom:25px;"></div>
+
+          <p>
+            Our primary school tutors know exactly how to help your child in Years 3 to 6 with their studies.
+          </p>
+
+          <p>
+            Through expert tutoring and our customised educational programmes,
+            your child can catch up, keep up or even exceed their peers.
+          </p>
+
+        </div>
+
+        <div class="col-lg-6">
+
+          <div class="blog-card">
+
+            <img src="tutor.png">
+
+            <div class="blog-content">
+
+              <small>ELEV8 ACADEMY</small>
+
+              <h3>
+                Choosing the right tutor
+              </h3>
+
+              <p>
+                By Elev8 Academy
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- APPROACH -->
+
+<section class="white-section pt-0">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>
+        How does our approach to learning work?
+      </h2>
+
+      <p>
+        Tailored tutoring with a plan
+      </p>
+
+      <div class="small-line"></div>
+
+    </div>
+
+    <div class="approach-box">
+
+      <div class="row approach-top g-4">
+
+        <div class="col-md-6">
+
+          <h4>
+            The learning programme
+          </h4>
+
+          <p>
+            Structured around your child’s individual needs and goals,
+            our learning programmes adapt over time to build confidence.
+          </p>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <h4>
+            Quality content
+          </h4>
+
+          <ul>
+
+            <li>
+              Developed by our experienced education team.
+            </li>
+
+            <li>
+              Clear and flexible approaches help your child thrive.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+<div class="row g-3">
+
+  <!-- TUTORING -->
+
+  <div class="col-md-6">
+
+    <div class="mini-card h-100">
+
+      <h4>
+        <i class="bi bi-mortarboard-fill text-warning me-2"></i>
+        Tutoring sessions
+      </h4>
+
+      <ul>
+
+        <li>
+          Live, face-to-face and online
+        </li>
+
+        <li>
+          Expert tutors matched to your child’s needs
+        </li>
+
+        <li>
+          Designed to be fun and engaging
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- REPORTING -->
+
+  <div class="col-md-6">
+
+    <div class="mini-card h-100">
+
+      <h4>
+        <i class="bi bi-journal-check text-warning me-2"></i>
+        Regular reporting
+      </h4>
+
+      <p>
+        Feedback after every session helps you keep track of your child’s progress.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- PRACTICE -->
+
+  <div class="col-md-12">
+
+    <div class="mini-card">
+
+      <h4>
+        <i class="bi bi-pencil-fill text-warning me-2"></i>
+        Practice exercises
+      </h4>
+
+      <p>
+        Optional practice questions and exercises to work through between sessions.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+<!-- FLEXIBILITY SECTION -->
+
+<section class="white-section pt-0">
+
+  <div class="container">
+
+    <!-- TOP ROW -->
+
+    <div class="row align-items-center g-5 mb-5">
+
+      <!-- IMAGE -->
+
+      <div class="col-lg-5">
+
+        <div class="focus-image-wrap">
+
+          <img src="Kid Focusing.png" class="focus-image">
+
+        </div>
+
+      </div>
+
+      <!-- TEXT -->
+
+        <div class="col-lg-7">
+        <h2 class="flex-title">
+          <strong>Flexible scheduling</strong> designed to fit busy family lifestyles
+        </h2>
+
+        <div class="flex-list">
+          <div class="flex-item">
+            <i class="bi bi-check-lg"></i>
+            <p><strong>Study from home</strong> (or anywhere) through our online platform.</p>
+          </div>
+
+          <div class="flex-item">
+            <i class="bi bi-check-lg"></i>
+            <p>
+             Book sessions at your convenience
+              <strong>from 7am to 10pm, 7 days a week.</strong>
+            </p>
+          </div>
+
+          <div class="flex-item">
+            <i class="bi bi-check-lg"></i>
+            <p><strong>Easily adjust bookings</strong> when plans change or life gets busy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <h2 class="progress-title">
+          <strong>Steady learning</strong> that builds meaningful progress
+        </h2>
+
+        <p class="progress-text">
+         From the very beginning to achieving your goals, we support you throughout your learning journey.
+        </p>
+
+        <div class="progress-list">
+          <div class="progress-item">
+            <i class="bi bi-youtube"></i>
+            <p><strong>Recorded sessions</strong> let you revisit lessons anytime.</p>
+          </div>
+
+          <div class="progress-item">
+            <i class="bi bi-star-fill"></i>
+            <p><strong>Regular progress updates</strong> help ensure you’re learning at the right pace.</p>
+          </div>
+
+          <div class="progress-item">
+            <i class="bi bi-life-preserver"></i>
+            <p><strong>Personalised tutoring</strong> helps you grow in confidence and reach your full potential.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRAPH -->
+
+      <div class="col-lg-7">
+
+        <div class="graph-card">
+
+          <img src="Graph1.png">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
