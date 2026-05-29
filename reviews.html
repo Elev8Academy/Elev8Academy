@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reviews | Elev8 Academy</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root{
+      --primary:#071B45;
+      --secondary:#1D3E7A;
+      --accent:#F2C14E;
+      --light:#F4EFE6;
+      --dark:#1F2937;
+      --white:#ffffff;
+      --blue:#1478F2;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:var(--light);
+      color:var(--dark);
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      background:rgba(7,27,69,0.95);
+      backdrop-filter:blur(10px);
+      padding:14px 0;
+    }
+
+    .navbar-brand{
+      display:flex;
+      align-items:center;
+      gap:2px;
+      text-decoration:none;
+    }
+
+    .navbar-brand img{
+      height:52px;
+    }
+
+    .logo-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+
+    .logo-main{
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:0.5px;
+    }
+
+    .logo-main .elev{
+      color:white;
+    }
+
+    .logo-main .eight{
+      color:var(--accent);
+    }
+
+    .logo-sub{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:white;
+      margin-top:4px;
+    }
+
+    .nav-link{
+      color:white !important;
+      margin:0 12px;
+      font-weight:500;
+      transition:0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active{
+      color:var(--accent) !important;
+    }
+
+    .dropdown-menu{
+      background:var(--primary);
+      border:none;
+      border-radius:15px;
+      padding:10px;
+    }
+
+    .dropdown-item{
+      color:white;
+      padding:10px 15px;
+      border-radius:10px;
+      transition:0.3s ease;
+    }
+
+    .dropdown-item:hover{
+      background:var(--secondary);
+      color:white;
+    }
+
+    .book-btn{
+      background:var(--accent);
+      color:var(--primary);
+      padding:12px 24px;
+      border-radius:12px;
+      font-weight:600;
+      text-decoration:none;
+      transition:0.3s ease;
+      display:inline-block;
+    }
+
+    .book-btn:hover{
+      background:white;
+      color:var(--primary);
+    }
+
+    /* HERO */
+    .reviews-hero{
+      background:white;
+      padding:150px 0 70px;
+    }
+
+    .breadcrumb-custom{
+      color:#3b5b94;
+      font-size:15px;
+      margin-bottom:25px;
+    }
+
+    .breadcrumb-custom span{
+      color:#0057d9;
+      font-weight:600;
+    }
+
+    .reviews-badge{
+  max-width:260px;
+  width:100%;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.badge-title{
+  color:var(--primary);
+  font-size:32px;
+  font-weight:700;
+  margin-top:15px;
+  margin-bottom:5px;
+}
+
+.badge-text{
+  color:#475569;
+  font-size:20px;
+  line-height:1.6;
+  margin:0;
+}
+
+.review-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(7,27,69,0.65);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+}
+
+.review-modal.show{
+  display:flex;
+}
+
+.review-form-box{
+  background:white;
+  width:min(520px, 92%);
+  border-radius:24px;
+  padding:32px;
+  position:relative;
+  box-shadow:0 20px 50px rgba(0,0,0,0.2);
+}
+
+.close-modal{
+  position:absolute;
+  top:14px;
+  right:18px;
+  border:none;
+  background:none;
+  font-size:32px;
+  color:var(--primary);
+}
+
+.review-form-box h2{
+  color:var(--primary);
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.review-form-box input,
+.review-form-box select,
+.review-form-box textarea{
+  width:100%;
+  padding:14px 16px;
+  margin-bottom:14px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-family:'Poppins', sans-serif;
+}
+
+.review-form-box textarea{
+  min-height:130px;
+  resize:none;
+}
+
+.form-btn{
+  background:var(--accent);
+  color:var(--primary);
+  border:none;
+  padding:14px 26px;
+  border-radius:12px;
+  font-weight:700;
+}
+
+    .hero-title{
+      font-size:68px;
+      font-weight:700;
+      color:var(--primary);
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-title span{
+      color:var(--accent);
+    }
+
+    .hero-line{
+      width:60px;
+      height:4px;
+      background:var(--accent);
+      border-radius:99px;
+      margin-bottom:25px;
+    }
+
+    .hero-text{
+      font-size:18px;
+      line-height:1.8;
+      color:#334155;
+      max-width:560px;
+    }
+
+    .rating-box{
+      background:white;
+      border-radius:24px;
+      padding:35px;
+      box-shadow:0 10px 30px rgba(7,27,69,0.08);
+      border:1px solid rgba(7,27,69,0.08);
+      text-align:center;
+      max-width:290px;
+      margin-left:auto;
+    }
+
+    .rating-box h2{
+      color:var(--primary);
+      font-size:48px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    .stars{
+      color:#F5B400;
+      font-size:28px;
+      letter-spacing:3px;
+      margin-bottom:10px;
+    }
+
+    .rating-box p{
+      color:#64748b;
+      margin:0;
+      font-weight:500;
+    }
+
+    /* MIDDLE FEATURE */
+    .feature-review{
+      background:white;
+      padding:40px 0 70px;
+    }
+
+    .feature-img{
+      width:100%;
+      height:360px;
+      object-fit:cover;
+      border-radius:24px;
+      box-shadow:0 10px 30px rgba(7,27,69,0.10);
+    }
+
+    .rating-panel{
+      padding:20px 30px;
+    }
+
+    .rating-panel h2{
+      color:var(--primary);
+      font-size:36px;
+      font-weight:700;
+      margin-bottom:25px;
+    }
+
+    .bar-row{
+      display:grid;
+      grid-template-columns:45px 1fr 45px;
+      align-items:center;
+      gap:12px;
+      margin-bottom:16px;
+      color:var(--primary);
+      font-weight:500;
+    }
+
+    .bar{
+      height:8px;
+      background:#ececec;
+      border-radius:99px;
+      overflow:hidden;
+    }
+
+    .bar span{
+      display:block;
+      height:100%;
+      background:#F5B400;
+      border-radius:99px;
+    }
+
+    .write-btn{
+      margin-top:20px;
+      border:1.5px solid var(--primary);
+      color:var(--primary);
+      padding:13px 28px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      transition:0.3s ease;
+      width:100%;
+      justify-content:center;
+    }
+
+    .write-btn:hover{
+      background:var(--primary);
+      color:white;
+    }
+
+    /* REVIEWS */
+    .reviews-section{
+      background:white;
+      padding:30px 0 80px;
+    }
+
+    .section-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:25px;
+    }
+
+    .section-header h2{
+      color:var(--primary);
+      font-weight:700;
+      font-size:30px;
+      margin:0;
+    }
+
+    .view-link{
+      color:#0057d9;
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    .review-card{
+      background:white;
+      border-radius:18px;
+      border:1px solid #e5e7eb;
+      padding:24px;
+      height:100%;
+      box-shadow:0 8px 24px rgba(7,27,69,0.04);
+    }
+
+    .review-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .person{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      color:var(--primary);
+    }
+
+    .avatar{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      background:var(--accent);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+    }
+
+    .avatar.blue{
+      background:var(--blue);
+    }
+
+    .score{
+      color:#F5B400;
+      font-size:14px;
+      background:#fff9ec;
+      padding:5px 10px;
+      border-radius:20px;
+      font-weight:700;
+    }
+
+    .review-card p{
+      color:#111827;
+      line-height:1.7;
+      margin:0;
+      font-size:15px;
+    }
+
+    .review-card strong{
+      color:#000;
+    }
+
+    .center-btn{
+      text-align:center;
+      margin-top:30px;
+    }
+
+    .outline-btn{
+      border:1.5px solid var(--primary);
+      color:var(--primary);
+      padding:13px 50px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:15px;
+      transition:0.3s ease;
+    }
+
+    .outline-btn:hover{
+      background:var(--primary);
+      color:white;
+    }
+
+    /* RECOMMENDATIONS */
+    .recommendations-section{
+      background:#f3f8ff;
+      padding:60px 0 80px;
+    }
+
+    .recommend-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:25px;
+    }
+
+    .recommend-title h2{
+      color:var(--primary);
+      font-size:30px;
+      font-weight:700;
+      margin:0;
+    }
+
+    .like-pill{
+      background:#dcecff;
+      color:#0066ff;
+      border-radius:30px;
+      padding:8px 18px;
+      font-weight:600;
+    }
+
+    .recommend-card{
+      background:white;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      padding:24px;
+      height:100%;
+      box-shadow:0 8px 24px rgba(7,27,69,0.04);
+    }
+
+    .recommend-card p{
+      color:#111827;
+      line-height:1.7;
+      margin:0;
+      font-size:15px;
+    }
+
+.extra-recommendations{
+  display:none;
+}
+
+.extra-recommendations.show{
+  display:flex;
+}
+
+    /* FOOTER */
+    footer{
+      background:#04102c;
+      color:white;
+      padding:25px 0;
+      text-align:center;
+    }
+
+    footer p{
+      margin:0;
+    }
+.extra-reviews{
+  display:none;
+}
+
+.extra-reviews.show{
+  display:flex;
+}
+
+.new-review-flash{
+  animation:flashReview 1.2s ease;
+}
+
+@keyframes flashReview{
+  0%{
+    background:#fff7d6;
+    transform:scale(1.03);
+  }
+  100%{
+    background:white;
+    transform:scale(1);
+  }
+}
+
+    @media(max-width:991px){
+      .hero-title{
+        font-size:48px;
+      }
+
+      .rating-box{
+        margin:40px auto 0;
+      }
+
+      .rating-panel{
+        padding:30px 0 0;
+      }
+    }
+
+    @media(max-width:768px){
+      .reviews-hero{
+        padding-top:130px;
+      }
+
+      .hero-title{
+        font-size:40px;
+      }
+
+      .feature-img{
+        height:260px;
+      }
+
+      .section-header,
+      .recommend-title{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+      }
+
+      .logo-main{
+        font-size:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+  <div class="container">
+
+    <a class="navbar-brand" href="index.html">
+      <img src="logo.png" alt="Logo">
+
+      <div class="logo-text">
+        <div class="logo-main">
+          <span class="elev">Elev</span><span class="eight">8</span>
+        </div>
+        <div class="logo-sub">Academy</div>
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+
+        <li class="nav-item">
+          <a class="nav-link" href="about us.html">About Us</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Programs
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="primary.html">Primary (3–6)</a></li>
+            <li><a class="dropdown-item" href="intermediate.html">Intermediate (7–8)</a></li>
+            <li><a class="dropdown-item" href="secondary.html">Secondary (9–13)</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="how it works.html">How It Works</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="reviews.html">Reviews</a>
+        </li>
+
+        <li class="nav-item ms-3">
+          <a href="#" class="book-btn">Book a Session</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="reviews-hero">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-7">
+        <div class="breadcrumb-custom">
+          Home &nbsp;›&nbsp; <span>Reviews</span>
+        </div>
+
+        <h1 class="hero-title">
+          Reviews &<br>
+          <span>Recommendations</span>
+        </h1>
+
+        <div class="hero-line"></div>
+
+        <p class="hero-text">
+          See what students and parents are saying about their experience with Elev8 Academy tutors.
+          We’re proud to make a difference.
+        </p>
+      </div>
+
+    <div class="col-lg-5 text-center">
+
+  <img src="reviewsicon.png"
+       alt="Loved by students"
+       class="reviews-badge">
+
+  <h3 class="badge-title">
+    Loved by students
+  </h3>
+
+  <p class="badge-text">
+    and parents across<br>
+    New Zealand
+  </p>
+
+</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MIDDLE IMAGE + RATING BREAKDOWN -->
+<section class="feature-review">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-7">
+        <img src="review1.png" alt="Happy online student" class="feature-img">
+      </div>
+
+      <div class="col-lg-5">
+        <div class="rating-panel">
+          <h2>Reviews</h2>
+
+         <div class="bar-row">
+  <span>5 ★</span>
+  <div class="bar">
+    <span style="width:97%;"></span>
+  </div>
+</div>
+
+<div class="bar-row">
+  <span>4 ★</span>
+  <div class="bar">
+    <span style="width:3%;"></span>
+  </div>
+</div>
+
+         <a href="#" class="write-btn" id="openReviewForm">
+  Write a Review <i class="bi bi-pencil"></i>
+</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOP REVIEWS -->
+<section class="reviews-section">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Top Reviews</h2>
+<a href="#" class="view-link" id="toggleReviews">  View all reviews <i class="bi bi-arrow-right"></i>
+</a>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-lg-4 col-md-6">
+        <div class="review-card">
+          <div class="review-top">
+            <div class="person"><div class="avatar">B</div> Brayden</div>
+            <div class="score">★ 5</div>
+          </div>
+          <p><strong>Perfect!</strong> Patrick is easy to understand and explains the concepts I am learning well. After my first session, I already felt more confident in my abilities.</p>
+        </div>
+      </div>    
+
+      <div class="col-lg-4 col-md-6">
+        <div class="review-card">
+          <div class="review-top">
+            <div class="person"><div class="avatar">M</div> Mele</div>
+            <div class="score">★ 5</div>
+          </div>
+          <p><strong>Perfect!</strong> Great communication, patient and worked well with my son.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="review-card">
+          <div class="review-top">
+            <div class="person"><div class="avatar">C</div> Cida</div>
+            <div class="score">★ 5</div>
+          </div>
+          <p><strong>Perfect!</strong> Great tutor, very competent and helpful. Excellent communication with us and very flexible.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="review-card">
+          <div class="review-top">
+            <div class="person"><div class="avatar">S</div> Sanjalesh</div>
+            <div class="score">★ 5</div>
+          </div>
+          <p><strong>Perfect!</strong> Patrick is a great tutor. My son was easily able to connect with him on the first meeting. He is providing lots resources for learning and keeps the student on their toes. Highly recommended!</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="review-card">
+          <div class="review-top">
+            <div class="person"><div class="avatar">S</div> Sonia</div>
+            <div class="score">★ 5</div>
+          </div>
+          <p><strong>Perfect!</strong> Excellent tutor! Would really recommend...Great tutoring sessions.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="review-card">
+          <div class="review-top">
+            <div class="person"><div class="avatar">D</div> Deon</div>
+            <div class="score">★ 5</div>
+          </div>
+          <p><strong>Perfect!</strong> Great tutor.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row g-4 mt-4 extra-reviews">
+
+  <div class="col-lg-4 col-md-6">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="person"><div class="avatar">A</div> Aria</div>
+        <div class="score">★ 5</div>
+      </div>
+      <p><strong>Perfect!</strong> Patrick has allowed me to find my feet while answering NCEA physics questions and is amazing at explaining unknown concepts when I get stuck.</p>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-6">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="person"><div class="avatar">E</div> Ellen</div>
+        <div class="score">★ 5</div>
+      </div>
+      <p><strong>Perfect!</strong> Had a great time with my tutor! He's patient, super helpful, has good communication and has a great style of teaching.</p>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-6">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="person"><div class="avatar">J</div> Joyce</div>
+        <div class="score">★ 5</div>
+      </div>
+      <p><strong>Perfect!</strong> Patrick is patient, helpful and knowledgeable. Easy to talk to and responds quickly.</p>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-6">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="person"><div class="avatar">D</div> Daniel</div>
+        <div class="score">★ 5</div>
+      </div>
+      <p><strong>Perfect!</strong> Great listener and excellent pacing for lesson :)</p>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-6">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="person"><div class="avatar">P</div> Pierre</div>
+        <div class="score">★ 5</div>
+      </div>
+      <p><strong>Perfect!</strong> I've had a fantastic time with my tutor! He's very patient, always taking the time to ensure I fully understand concepts. 5/5, highly recommend!</p>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-6">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="person"><div class="avatar">S</div> Sandra</div>
+        <div class="score">★ 5</div>
+      </div>
+      <p><strong>Perfect!</strong> Patrick was very calm and friendly. Great knowledge and extremely helpful, would highly recommend.</p>
+    </div>
+  </div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">W</div> William</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> He is helping me study NCEA level 1 algebra.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">T</div> Tareha</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Tutor communicates clearly and well explained even to go over again and again. Also a deep understanding of knowledge.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">J</div> Jacquie</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> My son said Patrick was awesome and explained everything super clearly. He is looking forward to next time.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">P</div> Patrick</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Great teacher, with an excellent way of explaining different problems.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">C</div> Cory</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Clear communication, patient, great teaching style.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">A</div> Ange</div>
+      <div class="score">★ 4</div>
+    </div>
+    <p><strong>Excellent!</strong> Floyd understands and is learning what he needs. Thank you.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">N</div> Nicolette</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> We have been super impressed with Patrick! Our son has so much more confidence and understanding going into his end of year exams and is really benefiting from Patrick’s tutoring.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">M</div> Mark</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Great tutor who is able to teach concepts of certain topics for NCEA Physics and Calculus. Very friendly person and communicates clearly throughout each lesson.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">L</div> Luis</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Patrick is an exceptional math tutor with a passion for helping others. He has helped me throughout my university studies and makes complex concepts easy to understand.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">N</div> Nico</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Knowledgeable young man. Helped me with university papers using his extensive knowledge of physics and engineering.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">E</div> Enock</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Before tutoring with Patrick I struggled academically. His guidance helped improve my confidence and academic performance significantly.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">R</div> Raj</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Patrick is trustworthy, professional and extremely knowledgeable. His communication skills and willingness to help stand out.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">C</div> Carl</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Engineering graduate whose teaching style is clear and concise. Highly recommended for NCEA Physics and Calculus students.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">J</div> J</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Patrick always goes the extra mile for his students. His ability to break down difficult concepts creates an effective learning experience.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">A</div> Ayaan</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Patrick helps me understand questions instead of simply giving answers. Learning with him is stress-free and enjoyable.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">G</div> Gavinazak</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Gives really clear explanations and makes topics easy to remember and understand.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">D</div> Dash</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Overall, Patrick is an excellent tutor and has been outstanding. He provides help when needed while encouraging independent learning.</p>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6">
+  <div class="review-card">
+    <div class="review-top">
+      <div class="person"><div class="avatar">D</div> Daniel &amp; Miko</div>
+      <div class="score">★ 5</div>
+    </div>
+    <p><strong>Perfect!</strong> Patrick is attentive, organised and dedicated. Our son leaves sessions feeling empowered, confident and motivated to learn.</p>
+  </div>
+</div>
+
+</div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="recommendations-section">
+  <div class="container">
+
+    <div class="recommend-title">
+  <h2>Recommendations <i class="bi bi-info-circle"></i></h2>
+
+  <a href="#" class="view-link" id="toggleRecommendations">
+    View all recommendations <i class="bi bi-arrow-right"></i>
+  </a>
+</div>
+
+    <div class="row g-4">
+
+      <div class="col-lg-6">
+        <div class="recommend-card">
+          <div class="person mb-3"><div class="avatar blue">G</div> Gavinazak</div>
+          <p>Patrick is a very trustworthy tutor because he gives really clear explanations of the topic and makes it easy to explain in a way where I'm able to remember and understand.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="recommend-card">
+          <div class="person mb-3"><div class="avatar blue">D</div> Dash</div>
+          <p>Overall, Patrick is an excellent tutor and seems like a great guy. I am currently at NCEA Level 2, so my experience is limited to that level, but so far, he has been outstanding.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="recommend-card">
+          <div class="person mb-3"><div class="avatar blue">A</div> Ayaan</div>
+          <p>Patrick’s an awesome math tutor — he really helps me understand the questions instead of just giving the answers. He explains things in a way that makes sense and never makes me feel stressed.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="recommend-card">
+          <div class="person mb-3"><div class="avatar blue">D</div> Daniel & Miko</div>
+          <p>Patrick is a really attentive and organised tutor. Our son leaves his sessions feeling empowered and confident. Patrick is patient and dedicated.</p>
+        </div>
+      </div>
+
+    </div>
+
+<div class="row g-4 mt-3 extra-recommendations">
+
+  <div class="col-lg-6">
+    <div class="recommend-card">
+      <div class="person mb-3"><div class="avatar blue">J</div> J</div>
+      <p>Patrick is a tutor who is always willing to go the extra mile for his students. He has profound knowledge in math and physics and his teaching skills in breaking down intricate concepts allows a comprehensive and effective learning experience for all students. Highly recommend him as a tutor!</p>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="recommend-card">
+      <div class="person mb-3"><div class="avatar blue">R</div> Raj</div>
+      <p>Patrick is a trustworthy tutor due to his exceptional qualities and commitment to his role. His clear communication and willingness to go the extra mile make him an excellent and dependable tutor.</p>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="recommend-card">
+      <div class="person mb-3"><div class="avatar blue">C</div> Carl</div>
+      <p>Engineering graduate who’s teaching style is clear and concise. Would recommend for NCEA students who want to excel in Physics and Calculus.</p>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="recommend-card">
+      <div class="person mb-3"><div class="avatar blue">E</div> Enock</div>
+      <p>Before tutoring with Patrick, I was struggling academically. Thanks to his exceptional tutoring skills and guidance, my academic performance improved significantly and learning became enjoyable.</p>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="recommend-card">
+      <div class="person mb-3"><div class="avatar blue">L</div> Luis</div>
+      <p>Patrick is an exceptional math tutor with a passion for helping others. He has helped me throughout my university studies and makes complex math concepts understandable.</p>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="recommend-card">
+      <div class="person mb-3"><div class="avatar blue">N</div> Nico</div>
+      <p>Knowledgeable young man. Helped me with university papers with his extensive knowledge and insight on physics and engineering. I would not have graduated if not for Patrick!</p>
+    </div>
+  </div>
+
+</div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Elev8 Academy. All Rights Reserved.</p>
+</footer>
+
+<script>
+const toggleReviews = document.getElementById("toggleReviews");
+const extraReviews = document.querySelector(".extra-reviews");
+
+toggleReviews.addEventListener("click", function(e){
+  e.preventDefault();
+
+  extraReviews.classList.toggle("show");
+
+  if(extraReviews.classList.contains("show")){
+    toggleReviews.innerHTML =
+      'Hide reviews <i class="bi bi-arrow-up"></i>';
+  } else {
+    toggleReviews.innerHTML =
+      'View all reviews <i class="bi bi-arrow-right"></i>';
+  }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="review-modal" id="reviewModal">
+  <div class="review-form-box">
+    <button class="close-modal" id="closeReviewForm">&times;</button>
+
+    <h2>Write a Review</h2>
+
+    <input type="text" id="reviewName" placeholder="Your name">
+    <select id="reviewRating">
+  <option value="5">★★★★★ 5 Stars</option>
+  <option value="4">★★★★☆ 4 Stars</option>
+  <option value="3">★★★☆☆ 3 Stars</option>
+  <option value="2">★★☆☆☆ 2 Stars</option>
+  <option value="1">★☆☆☆☆ 1 Star</option>
+</select>
+    <textarea id="reviewText" placeholder="Write your review..."></textarea>
+
+    <button id="submitReview" class="form-btn">Submit Review</button>
+  </div>
+</div>
+
+<script>
+const openReviewForm = document.getElementById("openReviewForm");
+const closeReviewForm = document.getElementById("closeReviewForm");
+const reviewModal = document.getElementById("reviewModal");
+const submitReview = document.getElementById("submitReview");
+
+openReviewForm.addEventListener("click", function(e){
+  e.preventDefault();
+  reviewModal.classList.add("show");
+});
+
+closeReviewForm.addEventListener("click", function(){
+  reviewModal.classList.remove("show");
+});
+
+submitReview.addEventListener("click", function(){
+  const name = document.getElementById("reviewName").value.trim();
+  const rating = document.getElementById("reviewRating").value;
+  const text = document.getElementById("reviewText").value.trim();
+
+  if(name === "" || text === ""){
+    alert("Please enter your name and review.");
+    return;
+  }
+
+  const firstLetter = name.charAt(0).toUpperCase();
+
+  const newReview = document.createElement("div");
+  newReview.className = "col-lg-4 col-md-6";
+
+  newReview.innerHTML = `
+    <div class="review-card new-review-flash">
+      <div class="review-top">
+        <div class="person">
+          <div class="avatar">${firstLetter}</div> ${name}
+        </div>
+<div class="score">
+  ${'★'.repeat(rating)}
+</div>
+      <p><strong>Perfect!</strong> ${text}</p>
+    </div>
+  `;
+
+  const reviewsRow = document.querySelector(".reviews-section .row.g-4");
+  reviewsRow.prepend(newReview);
+
+  reviewModal.classList.remove("show");
+
+  document.getElementById("reviewName").value = "";
+  document.getElementById("reviewText").value = "";
+
+  newReview.scrollIntoView({ behavior:"smooth", block:"center" });
+});
+</script>
+
+<script>
+const toggleRecommendations = document.getElementById("toggleRecommendations");
+const extraRecommendations = document.querySelector(".extra-recommendations");
+
+toggleRecommendations.addEventListener("click", function(e){
+  e.preventDefault();
+
+  extraRecommendations.classList.toggle("show");
+
+  if(extraRecommendations.classList.contains("show")){
+    toggleRecommendations.innerHTML =
+      'Hide recommendations <i class="bi bi-arrow-up"></i>';
+  } else {
+    toggleRecommendations.innerHTML =
+      'View all recommendations <i class="bi bi-arrow-right"></i>';
+  }
+});
+</script>
+
+</body>
+</html>
